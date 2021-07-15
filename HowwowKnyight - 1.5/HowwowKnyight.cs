@@ -322,7 +322,7 @@ namespace HowwowKnyight
 
 
         #region OwO-ify
-        private static Dictionary<string, string> uwu_simpwe = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> uwu_simpwe = new Dictionary<string, string>()
         {
             { @"R", @"W" },
             //{ @"r", @"w" },
@@ -336,7 +336,7 @@ namespace HowwowKnyight
             { @"th", @"d" },
 
         };
-        private static Dictionary<string, string> uwu_wegex = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> uwu_wegex = new Dictionary<string, string>()
         {
             { @"N([AEIOU])", @"NY$1" },
             { @"N([aeiou])", @"Ny$1" },
@@ -357,7 +357,7 @@ namespace HowwowKnyight
             return uwu_simpwe.Aggregate(uwu_wegex.Aggregate(owig, (cuwwent, vawue) => Regex.Replace(cuwwent, vawue.Key, vawue.Value)), (cuwwent, vawue) => cuwwent.Replace(vawue.Key, vawue.Value));
         }
 
-        static char[] sepawatows = { '-', '.', ' ' };
+        static readonly char[] sepawatows = { '-', '.', ' ' };
 
         public static string PwepwocessDiawoge(string owig)
         {
