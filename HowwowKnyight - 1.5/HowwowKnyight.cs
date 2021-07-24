@@ -87,7 +87,13 @@ namespace HowwowKnyight
             #region DebugInterCaller
             try
             {
-                if (ModHooks.LoadedMods.Contains("DebugMod") == true)
+				bool debug = false;
+				foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
+				{
+					string asmName = asm.GetName().Name;
+					if (asmName == "DebugMod") debug = true;
+				}
+				if (debug)
                 {
                     var go = GameObject.Find("DebugEasterEgg");
                     Log("Debug Exists");
