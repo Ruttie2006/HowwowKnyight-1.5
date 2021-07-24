@@ -91,7 +91,11 @@ namespace HowwowKnyight
 				foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
 				{
 					string asmName = asm.GetName().Name;
-					if (asmName == "DebugMod") debug = true;
+					if (asmName == "DebugMod") 
+					{
+						debug = true;
+						break;
+					}
 				}
 				if (debug)
                 {
