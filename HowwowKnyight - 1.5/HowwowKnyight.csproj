@@ -38,6 +38,9 @@
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'net35|AnyCPU'">
+    <OutputPath>bin\net35\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="HowwowKnyight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

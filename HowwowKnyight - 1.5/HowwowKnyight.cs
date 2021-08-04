@@ -23,6 +23,7 @@ using System.Security.Permissions;
 
 namespace System.Runtime.CompilerServices
 {
+
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public class IgnoresAccessChecksToAttribute : Attribute
     {
@@ -45,15 +46,16 @@ namespace HowwowKnyight
        Status update! I've updated it to 1.5 nyow, as yuw can obviuwswy see because yuw awe wooking at it! >w<
 	   ~Ruttie
 	*/
+
     public class HowwowKnyight : Mod, ITogglableMod
     {
-        #region SettingStuff
+    #region SettingStuff
         static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static string SpwitePath = ".wesuwwces.SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static readonly string Author = "Henpemaz";
         static readonly string Contributor = "Ruttie";
         private bool enyabwed = false;
-        #endregion
+    #endregion
         public HowwowKnyight() : base("HowwowKnyight") 
         {
             if (!enyabwed)
@@ -64,7 +66,7 @@ namespace HowwowKnyight
             //ModHooks.LanguageGetHook += WanguageGet;
         }
 
-        public override string GetVersion() => "2.8 - 1.5.75";
+        public override string GetVersion() => "3.0 - 1.5.75";
 
         //int[] nums = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //sry RedFrog
         //Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //go SFG
@@ -72,14 +74,14 @@ namespace HowwowKnyight
         public override void Initialize()
         {
             Log("Inyitiawizing UwU");
-            #region Hooks
+    #region Hooks
             if (!enyabwed)
             {
                 ModHooks.LanguageGetHook += WanguageGet;
                 enyabwed = true;
             }
-            #endregion
-            #region DebugInterCaller
+    #endregion
+    #region DebugInterCaller
             try
             {
 				bool debug = false;
@@ -125,7 +127,7 @@ namespace HowwowKnyight
                 ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
                 Log("Debug check faiwed");
             }
-            #endregion
+    #endregion
             Log("Done inyitiawizing UwU");
             Log("Mwade bwy: " + Author + ", and fyixed annoying softlock bwy: " + Contributor + ". Enjoy :3 ~Ruttie");
             Log("If yuw encuwntew any bug, (and wead dis), contact me: Ruttie#3005 on Discowd! >w<");
@@ -137,7 +139,7 @@ namespace HowwowKnyight
             return new List<(string, string)>();
         }
 
-        #region DebugInter
+    #region DebugInter
         public void DebugInter()
         {
             Log("Debug is hewe, changing paths OwO");
@@ -145,10 +147,10 @@ namespace HowwowKnyight
             SpwitePath = ".wesuwwces.SiwkNever2.png";
             ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
         }
-        #endregion
+    #endregion
 
 
-        #region TitleScreen
+    #region TitleScreen
         public static Coroutine ModifyTitweTextuweRuwtine { get; private set; }
         private static void ActiveSceneChangedHandwer(Scene awg0, LoadSceneMode awg1)
         {
@@ -195,16 +197,23 @@ namespace HowwowKnyight
                 yield return null;
             }
         }
-        #endregion
+    #endregion
 
 
-        #region WanguageGet
+    #region WanguageGet
         private string WanguageGet(string key, string instance, string owig)
         {
-            Modding.Logger.Log("key: " + key);
-            Modding.Logger.Log("instance: " + instance);
-            Modding.Logger.Log("owig: " + owig);
-            if (key == "GRIMM_SUPER" && owig == "Troupe Master")
+            bool FyremothHere = false;
+            foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                string asmName = asm.GetName().Name;
+                //Modding.Logger.Log(asmName);
+                if (asmName == "Fyremoth")
+                {
+                    FyremothHere = true;
+                }
+            }
+            if (key == "GRIMM_SUPER" && owig == "Troupe Master" && FyremothHere == false)
             {
                 owig = "OwO Mastew";
                 return (owig);
@@ -230,10 +239,10 @@ namespace HowwowKnyight
         }
 
         public delegate string WanguageGetWef(ModHooks instance, string key, string tabwe);
-        #endregion
+    #endregion
 
 
-        #region Unload
+    #region Unload
         public void Unload()
         {
             Log("Unwoad UwU");
@@ -276,10 +285,10 @@ namespace HowwowKnyight
             }
             GameObject.Find("LogoTitle").GetComponent<SpriteRenderer>().sprite = owiginawTitweSpwite;
         }
-        #endregion
+    #endregion
 
 
-        #region OwO-ify
+    #region OwO-ify
         private static readonly Dictionary<string, string> uwu_simpwe = new Dictionary<string, string>()
         {
             { @"R", @"W" },
@@ -355,7 +364,7 @@ namespace HowwowKnyight
             if (owig.EndsWith("?") || (!hasFace && UnityEngine.Random.value < 0.2f))
             {
                 owig = owig.TrimEnd(sepawatows);
-                switch (UnityEngine.Random.Range(0, 10))
+                switch (UnityEngine.Random.Range(0, 15))
                 {
                     case 0:
                         owig += " uwu";
@@ -376,8 +385,19 @@ namespace HowwowKnyight
                         owig += " ^w^";
                         break;
                     case 6:
+                        owig += " QwQ";
+                        break;
                     case 7:
                         owig += " UwU";
+                        break;
+                    case 8:
+                        owig += " @w@";
+                        break;
+                    case 9:
+                        owig += " >.<";
+                        break;
+                    case 10:
+                        owig += " ÕwÕ";
                         break;
                     default:
                         owig += "~";
@@ -387,6 +407,25 @@ namespace HowwowKnyight
             }
             return owig;
         }
-        #endregion
+    #endregion
     }
+/*#if NET35
+public class HowwowKnyight : Mod
+    {
+        public override void Initialize()
+        {
+            Log("3.5 found");
+        }
+    }
+#endif
+#if NET472
+    public class HowwowKnyight : Mod
+    {
+        public override void Initialize()
+        {
+            Log("4.7.2 found");
+        }
+    }
+#endif
+    Testing stuff*/
 }
