@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <HollowKnightFolder>.\Vanilla</HollowKnightFolder>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -39,6 +40,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GlobalModSettings.cs" />
     <Compile Include="HowwowKnyight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,41 +52,41 @@
     <EmbeddedResource Include="wesuwwces\SpriteAtlasTexture-Title-2048x2048-fmt12.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>.\Vanilla\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>$(HollowKnightFolder)\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>.\Vanilla\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_PlayMaker">
-      <HintPath>.\Vanilla\MMHOOK_PlayMaker.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\MMHOOK_PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>.\Vanilla\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>.\Vanilla\MonoMod.Utils.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="PlayMaker">
-      <HintPath>.\Vanilla\PlayMaker.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>.\Vanilla\UnityEngine.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>.\Vanilla\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>.\Vanilla\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>.\Vanilla\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>.\Vanilla\System.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\System.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
-      <HintPath>.\Vanilla\mscorlib.dll</HintPath>
+      <HintPath>$(HollowKnightFolder)\mscorlib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

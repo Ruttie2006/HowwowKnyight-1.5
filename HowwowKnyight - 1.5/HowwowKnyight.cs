@@ -16,6 +16,8 @@ using System.Text.RegularExpressions;
 using System.Security;
 using System.Security.Permissions;
 
+using HowwowKnyight.GlobalSettings;
+
 
 //[assembly: IgnoresAccessChecksTo("Assembly-CSharp")]
 //[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -49,7 +51,7 @@ namespace HowwowKnyight
        Yet another status update! I've updated it to 1.5 now, as you can obviously see because you are looking at it!
 	   ~Ruttie
 	*/
-    public class HowwowKnyight : Mod, ITogglableMod
+    public class HowwowKnyight : Mod, ITogglableMod,IGlobalSettings<GlobalModSettings>
     {
         #region SettingStuff
         static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
@@ -141,6 +143,10 @@ namespace HowwowKnyight
         {
             return new List<(string, string)>();
         }
+        
+        public static GlobalModSettings settings { get; set; } = new GlobalModSettings();
+        public void OnLoadGlobal(GlobalModSettings s) => HowwowKnyight.settings = s;
+        public GlobalModSettings OnSaveGlobal() => HowwowKnyight.settings;
 
         #region DebugInter
         public void DebugInter()
