@@ -424,7 +424,7 @@ namespace HowwowKnyight
             {
                 owig = owig.TrimEnd(sepawatows);
                 GlobalSettingsClass howwowKnyightSettings = new GlobalSettingsClass();
-                Modding.Logger.Log(howwowKnyightSettings.OwO);
+                //Modding.Logger.Log(howwowKnyightSettings.OwO);
                 owig += howwowKnyightSettings.OwO[UnityEngine.Random.Range(0, (howwowKnyightSettings.OwO.Length - 1))];
             }
             return owig;
