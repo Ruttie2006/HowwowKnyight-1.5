@@ -8,6 +8,8 @@ using System.IO;
 using Modding;
 using MonoMod.RuntimeDetour;
 //using DebugMod;
+using HowwowKnyight.GlobalSettings;
+//using GlobalSettings;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,15 +49,32 @@ namespace HowwowKnyight
 	   ~Ruttie
 	*/
 
-    public class HowwowKnyight : Mod, ITogglableMod
+    public class HowwowKnyight : Mod, ITogglableMod, IGlobalSettings<GlobalSettingsClass>
     {
-    #region SettingStuff
+
+
+        #region SettingStuff
+
         static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static string SpwitePath = ".wesuwwces.SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static readonly string Author = "Henpemaz";
         static readonly string Contributor = "Ruttie";
         private bool enyabwed = false;
-    #endregion
+
+        public static GlobalSettingsClass settings { get; set; } = new GlobalSettingsClass();
+        public void OnLoadGlobal(GlobalSettingsClass s)
+        {
+            Modding.Logger.Log("loading globalsettings");
+            HowwowKnyight.settings = s;
+            Modding.Logger.Log(settings.OwO);
+        }
+        public GlobalSettingsClass OnSaveGlobal()
+        {
+            Modding.Logger.Log("saving globalsettings");
+            Modding.Logger.Log(settings.OwO);
+            return HowwowKnyight.settings;
+        }
+        #endregion
         public HowwowKnyight() : base("HowwowKnyight") 
         {
             if (!enyabwed)
@@ -66,7 +85,7 @@ namespace HowwowKnyight
             //ModHooks.LanguageGetHook += WanguageGet;
         }
 
-        public override string GetVersion() => "3.0 - 1.5.75";
+        public override string GetVersion() => "3.5.1 - 1.5.75";
 
         //int[] nums = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //sry RedFrog
         //Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //go SFG
@@ -364,46 +383,9 @@ namespace HowwowKnyight
             if (owig.EndsWith("?") || (!hasFace && UnityEngine.Random.value < 0.2f))
             {
                 owig = owig.TrimEnd(sepawatows);
-                switch (UnityEngine.Random.Range(0, 15))
-                {
-                    case 0:
-                        owig += " uwu";
-                        break;
-                    case 1:
-                        owig += " owo";
-                        break;
-                    case 2:
-                        owig += " UwU";
-                        break;
-                    case 3:
-                        owig += " OwO";
-                        break;
-                    case 4:
-                        owig += " >w<";
-                        break;
-                    case 5:
-                        owig += " ^w^";
-                        break;
-                    case 6:
-                        owig += " QwQ";
-                        break;
-                    case 7:
-                        owig += " UwU";
-                        break;
-                    case 8:
-                        owig += " @w@";
-                        break;
-                    case 9:
-                        owig += " >.<";
-                        break;
-                    case 10:
-                        owig += " ÕwÕ";
-                        break;
-                    default:
-                        owig += "~";
-                        break;
-                }
-                
+                GlobalSettingsClass howwowKnyightSettings = new GlobalSettingsClass();
+                Modding.Logger.Log(howwowKnyightSettings.OwO);
+                owig += howwowKnyightSettings.OwO[UnityEngine.Random.Range(0, (howwowKnyightSettings.OwO.Length - 1))];
             }
             return owig;
         }
