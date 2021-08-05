@@ -42,7 +42,7 @@
     <OutputPath>bin\net35\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GlobalSettings.cs" />
     <Compile Include="HowwowKnyight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
