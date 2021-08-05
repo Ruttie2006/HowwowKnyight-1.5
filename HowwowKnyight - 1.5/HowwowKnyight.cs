@@ -60,19 +60,28 @@ namespace HowwowKnyight
 
         #region SettingStuff
 
-        private Texture2D _tex;
-        static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
+        #region private
         static string SpwitePath = ".wesuwwces.SpriteAtlasTexture-Title-2048x2048-fmt12.png";
+        static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static readonly string Author = "Henpemaz";
         static readonly string Contributor = "Ruttie";
-        private bool enyabwed = false;
+        static Sprite titweSpwite;
+        static Sprite owiginawTitweSpwite;
 
+        private Texture2D _tex;
+        private bool enyabwed = false;
         private Hook wanguageGetHook;
 
         //int[] nums = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //sry RedFrog
         //Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //go SFG
-
+        #endregion
+        #region public
+        public static Coroutine ModifyTitweTextuweRuwtine { get; private set;}
         public static GlobalSettingsClass settings { get; set; } = new GlobalSettingsClass();
+        public delegate string WanguageGetWef(ModHooks instance, string key, string tabwe);
+
+        #endregion
+
         public void OnLoadGlobal(GlobalSettingsClass s)
         {
             Modding.Logger.Log("loading globalsettings");
@@ -106,7 +115,7 @@ namespace HowwowKnyight
         #endregion
 
 
-        #region Init
+        #region Init/override
 
         public override void Initialize()
         {
@@ -194,7 +203,6 @@ namespace HowwowKnyight
 
         #region TitleScreen
 
-        public static Coroutine ModifyTitweTextuweRuwtine { get; private set; }
         private static void ActiveSceneChangedHandwer(Scene awg0, LoadSceneMode awg1)
         {
             if (awg0.name == "Menu_Title")
@@ -215,8 +223,7 @@ namespace HowwowKnyight
             }
         }
 
-        static Sprite titweSpwite;
-        static Sprite owiginawTitweSpwite;
+
 
         static System.Collections.IEnumerator ModifyTitweSpwite()
         {
@@ -287,7 +294,6 @@ namespace HowwowKnyight
             }
         }
 
-        public delegate string WanguageGetWef(ModHooks instance, string key, string tabwe);
         
         #endregion
 
@@ -342,6 +348,7 @@ namespace HowwowKnyight
 
         #region OwO-ify
 
+        #region Dictionaries
         private static readonly Dictionary<string, string> uwu_simpwe = new Dictionary<string, string>()
         {
             { @"R", @"W" },
@@ -370,6 +377,7 @@ namespace HowwowKnyight
             { @"Ove\b", @"Uv" },
             { @"ove\b", @"uv" },
         };
+        #endregion
 
         public static string UWUfyStwing(string owig)
         {
@@ -454,4 +462,5 @@ namespace HowwowKnyight
 }
 
 #endregion
+
 #endregion
