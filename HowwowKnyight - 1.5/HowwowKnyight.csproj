@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
+    <EmbeddedResource Include="wesuwwces\atlas0_213.png" />
     <EmbeddedResource Include="wesuwwces\SiwkNever2.png" />
   </ItemGroup>
   <ItemGroup>

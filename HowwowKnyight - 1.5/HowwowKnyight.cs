@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region everything
+#region usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +9,7 @@ using System.IO;
 
 using Modding;
 using MonoMod.RuntimeDetour;
-//using DebugMod;
 using HowwowKnyight.GlobalSettings;
-//using GlobalSettings;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,12 +17,14 @@ using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using System.Security;
 using System.Security.Permissions;
+#endregion
 
+#region System
 
 //[assembly: IgnoresAccessChecksTo("Assembly-CSharp")]
 //[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
-[module: UnverifiableCode]
 
+[module: UnverifiableCode]
 namespace System.Runtime.CompilerServices
 {
 
@@ -38,6 +40,9 @@ namespace System.Runtime.CompilerServices
     }
 }
 
+#endregion
+
+#region HowwowKnyight
 
 namespace HowwowKnyight
 {
@@ -55,11 +60,17 @@ namespace HowwowKnyight
 
         #region SettingStuff
 
+        private Texture2D _tex;
         static string TitweTexturename = "SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static string SpwitePath = ".wesuwwces.SpriteAtlasTexture-Title-2048x2048-fmt12.png";
         static readonly string Author = "Henpemaz";
         static readonly string Contributor = "Ruttie";
         private bool enyabwed = false;
+
+        private Hook wanguageGetHook;
+
+        //int[] nums = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //sry RedFrog
+        //Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //go SFG
 
         public static GlobalSettingsClass settings { get; set; } = new GlobalSettingsClass();
         public void OnLoadGlobal(GlobalSettingsClass s)
@@ -74,7 +85,12 @@ namespace HowwowKnyight
             Modding.Logger.Log(settings.OwO);
             return HowwowKnyight.settings;
         }
+
         #endregion
+
+
+        #region Base and version
+
         public HowwowKnyight() : base("HowwowKnyight") 
         {
             if (!enyabwed)
@@ -85,22 +101,24 @@ namespace HowwowKnyight
             //ModHooks.LanguageGetHook += WanguageGet;
         }
 
-        public override string GetVersion() => "3.5.1 - 1.5.75";
+        public override string GetVersion() => "3.7.2 - 1.5.75";
 
-        //int[] nums = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //sry RedFrog
-        //Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //go SFG
-        private Hook wanguageGetHook;
+        #endregion
+
+
+        #region Init
+
         public override void Initialize()
         {
             Log("Inyitiawizing UwU");
-    #region Hooks
+            #region Hooks
             if (!enyabwed)
             {
                 ModHooks.LanguageGetHook += WanguageGet;
                 enyabwed = true;
             }
-    #endregion
-    #region DebugInterCaller
+            #endregion
+            #region DebugInterCaller
             try
             {
 				bool debug = false;
@@ -146,7 +164,7 @@ namespace HowwowKnyight
                 ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
                 Log("Debug check faiwed");
             }
-    #endregion
+            #endregion
             Log("Done inyitiawizing UwU");
             Log("Mwade bwy: " + Author + ", and fyixed annoying softlock bwy: " + Contributor + ". Enjoy :3 ~Ruttie");
             Log("If yuw encuwntew any bug, (and wead dis), contact me: Ruttie#3005 on Discowd! >w<");
@@ -158,7 +176,11 @@ namespace HowwowKnyight
             return new List<(string, string)>();
         }
 
-    #region DebugInter
+        #endregion
+
+
+        #region DebugInter
+
         public void DebugInter()
         {
             Log("Debug is hewe, changing paths OwO");
@@ -166,10 +188,12 @@ namespace HowwowKnyight
             SpwitePath = ".wesuwwces.SiwkNever2.png";
             ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
         }
-    #endregion
+
+        #endregion
 
 
-    #region TitleScreen
+        #region TitleScreen
+
         public static Coroutine ModifyTitweTextuweRuwtine { get; private set; }
         private static void ActiveSceneChangedHandwer(Scene awg0, LoadSceneMode awg1)
         {
@@ -184,6 +208,10 @@ namespace HowwowKnyight
             {
                 GameManager.instance.StopCoroutine(ModifyTitweTextuweRuwtine);
                 ModifyTitweTextuweRuwtine = null;
+            }
+            if (awg0.name == "")
+            {
+
             }
         }
 
@@ -216,10 +244,12 @@ namespace HowwowKnyight
                 yield return null;
             }
         }
-    #endregion
+
+        #endregion
 
 
-    #region WanguageGet
+        #region WanguageGet
+
         private string WanguageGet(string key, string instance, string owig)
         {
             bool FyremothHere = false;
@@ -258,10 +288,12 @@ namespace HowwowKnyight
         }
 
         public delegate string WanguageGetWef(ModHooks instance, string key, string tabwe);
-    #endregion
+        
+        #endregion
 
 
-    #region Unload
+        #region Unload
+
         public void Unload()
         {
             Log("Unwoad UwU");
@@ -304,10 +336,12 @@ namespace HowwowKnyight
             }
             GameObject.Find("LogoTitle").GetComponent<SpriteRenderer>().sprite = owiginawTitweSpwite;
         }
-    #endregion
+
+        #endregion
 
 
-    #region OwO-ify
+        #region OwO-ify
+
         private static readonly Dictionary<string, string> uwu_simpwe = new Dictionary<string, string>()
         {
             { @"R", @"W" },
@@ -389,25 +423,35 @@ namespace HowwowKnyight
             }
             return owig;
         }
-    #endregion
+
+        #endregion
     }
-/*#if NET35
-public class HowwowKnyight : Mod
-    {
-        public override void Initialize()
-        {
-            Log("3.5 found");
-        }
-    }
-#endif
-#if NET472
+
+    #region unnecesary
+
+    /*#if NET35
     public class HowwowKnyight : Mod
-    {
-        public override void Initialize()
         {
-            Log("4.7.2 found");
+            public override void Initialize()
+            {
+                Log("3.5 found");
+            }
         }
-    }
-#endif
-    Testing stuff*/
+    #endif
+    #if NET472
+        public class HowwowKnyight : Mod
+        {
+            public override void Initialize()
+            {
+                Log("4.7.2 found");
+            }
+        }
+    #endif
+        Testing stuff*/
+
+    #endregion
+
 }
+
+#endregion
+#endregion
