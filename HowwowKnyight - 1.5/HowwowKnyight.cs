@@ -68,7 +68,7 @@ namespace HowwowKnyight
         static Sprite titweSpwite;
         static Sprite owiginawTitweSpwite;
 
-        private Texture2D _tex;
+        //private Texture2D _tex;
         private bool enyabwed = false;
         private Hook wanguageGetHook;
 
@@ -86,12 +86,10 @@ namespace HowwowKnyight
         {
             Modding.Logger.Log("loading globalsettings");
             HowwowKnyight.settings = s;
-            Modding.Logger.Log(settings.OwO);
         }
         public GlobalSettingsClass OnSaveGlobal()
         {
             Modding.Logger.Log("saving globalsettings");
-            Modding.Logger.Log(settings.OwO);
             return HowwowKnyight.settings;
         }
 
