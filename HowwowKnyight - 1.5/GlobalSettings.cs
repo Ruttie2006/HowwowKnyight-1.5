@@ -1,13 +1,30 @@
 ﻿#region GlobalSettings
+using System.Collections.Generic;
 
 namespace HowwowKnyight.GlobalSettings
 {
     public class GlobalSettingsClass
     {
-        public string[] OwO = new[]
+        /*public string[] OwO = new[]
         {
                 " uwu", " owo", " UwU", " OwO", " >w<", " ^w^", " QwQ", " UwU", " @w@", " >.<", " ÕwÕ", "~", "~", "~",
                 "~", "~"
+        };*/
+        public List<string> OwO = new List<string>()
+        {
+            " uwu",
+            " owo",
+            " UwU",
+            " OwO",
+            " >w<",
+            " ^w^",
+            " QwQ",
+            " UwU",
+            " @w@",
+            " >.<",
+            " ÕwÕ",
+            "~", "~", "~", "~", "~"
+
         };
     }
 }
