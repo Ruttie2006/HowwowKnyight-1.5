@@ -261,9 +261,14 @@ namespace HowwowKnyight
         {
             if (unloaded == false) 
             {
-                owiginalgwimm = grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture;
-                grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture = HowwowKnyight.Instance.images["atlas0_213"];
-
+                while (owiginalgwimm == null) 
+                {
+                    owiginalgwimm = grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture;
+                    if (owiginalgwimm != null)
+                    {
+                        grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture = HowwowKnyight.Instance.images["atlas0_213"];
+                    }
+                }
             }
             else if (unloaded == true)
             {
