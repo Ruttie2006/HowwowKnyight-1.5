@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
 using System.IO;
 
@@ -16,7 +15,6 @@ using UnityEngine.SceneManagement;
 
 using System.Text.RegularExpressions;
 using System.Security;
-using System.Security.Permissions;
 using System.Collections;
 #endregion
 
@@ -70,7 +68,9 @@ namespace HowwowKnyight
         static readonly string Contributor = "Ruttie";
         static Sprite titweSpwite;
         static Sprite owiginawTitweSpwite;
+        static Texture owiginalgwimm;
         private GameObject grimm;
+        private bool unloaded;
 
 
         private bool enyabwed = false;
@@ -87,6 +87,7 @@ namespace HowwowKnyight
         public Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
         //public HowwowKnyight hk = new HowwowKnyight();
         public static HowwowKnyight Instance { get; private set; }
+        public bool update;
         #endregion
 
         public void OnLoadGlobal(GlobalSettingsClass s)
@@ -126,6 +127,7 @@ namespace HowwowKnyight
         {
             Log("Inyitiawizing UwU");
 
+            unloaded = false;
             Instance = this;
             #region Hooks
             if (!enyabwed)
@@ -135,7 +137,6 @@ namespace HowwowKnyight
             }
 
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += SceneChanged;
-            ModHooks.HeroUpdateHook += Update;
             #endregion
 
             #region DebugInterCaller
@@ -188,13 +189,16 @@ namespace HowwowKnyight
 
             #region Texturestuff
 
-            grimm = preloadedObjects["GG_Grimm"][@"Grimm Scene/Grimm Boss"];
+            if (preloadedObjects != null)
+            {
+                grimm = preloadedObjects["GG_Grimm"][@"Grimm Scene/Grimm Boss"];
+            }
+            
 
             string[] resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
 
             foreach (string res in resourceNames)
             {
-                //DebugMod.instance.Log(res + "\n\n");
                 if (res.StartsWith("HowwowKnyight.wesuwwces."))
                 {
                     try
@@ -255,41 +259,48 @@ namespace HowwowKnyight
 
         private void Update()
         {
-            ReplaceGrimm();
+            if (unloaded == false) 
+            {
+                owiginalgwimm = grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture;
+                grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture = HowwowKnyight.Instance.images["atlas0_213"];
+
+            }
+            else if (unloaded == true)
+            {
+                Modding.Logger.LogError("Update called while unloaded");
+            }
         }
 
         private void SceneChanged(Scene awg0, Scene awg1)
         {
             Log("SceneChanged");
             Log(awg1.name);
-            if (awg1.name == "GG_Grimm")
-            {
-                Log("Right scene found");
-                //GameManager.instance.StartCoroutine(howwowKnyight.SetSprite(awg1));
-            }
-        }
-
-        private static void ActiveSceneChangedHandwer(Scene awg0, LoadSceneMode awg1)
-        {
-            if (awg0.name == "Menu_Title")
+            if (awg1.name == "Menu_Title")
             {
                 if (ModifyTitweTextuweRuwtine == null)
                 {
                     ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
                 }
             }
-            else if(ModifyTitweTextuweRuwtine != null)
+            else if (ModifyTitweTextuweRuwtine != null)
             {
                 GameManager.instance.StopCoroutine(ModifyTitweTextuweRuwtine);
                 ModifyTitweTextuweRuwtine = null;
             }
 
+            if (awg1.name == "GG_Grimm")
+            {
+                Log("Right scene found");
+                ModHooks.HeroUpdateHook += Update;
+                update = true;
+            }
+            else if (update == true && awg1.name != "GG_Grimm")
+            {
+                ModHooks.HeroUpdateHook -= Update;
+                update = false;
+            }
         }
 
-        public void ReplaceGrimm()
-        {
-            grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture = HowwowKnyight.Instance.images["atlas0_213"];
-        }
         static IEnumerator ModifyTitweSpwite()
         {
             yield return null;
@@ -316,8 +327,6 @@ namespace HowwowKnyight
                 yield return null;
             }
         }
-
-
 
         #endregion
 
@@ -372,7 +381,6 @@ namespace HowwowKnyight
             Log("Unwoad UwU");
             try
             {
-
                 if (wanguageGetHook != null)
                 {
                     wanguageGetHook.Dispose();
@@ -385,15 +393,21 @@ namespace HowwowKnyight
                     enyabwed = false;
                 }
 
-                UnityEngine.SceneManagement.SceneManager.sceneLoaded -= HowwowKnyight.ActiveSceneChangedHandwer;
+                UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= SceneChanged;
+                ModHooks.HeroUpdateHook -= Update;
+
+                WestoweGwimm();
+
                 if (ModifyTitweTextuweRuwtine != null)
                 {
                     GameManager.instance.StopCoroutine(ModifyTitweTextuweRuwtine);
                     ModifyTitweTextuweRuwtine = null;
                 }
-                WestoweTitweTextuwe();
 
+                WestoweTitweTextuwe();
                 Log("Done unwoading UwU");
+
+                unloaded = true;
             }
             catch
             {
@@ -408,6 +422,15 @@ namespace HowwowKnyight
                 return;
             }
             GameObject.Find("LogoTitle").GetComponent<SpriteRenderer>().sprite = owiginawTitweSpwite;
+        }
+
+        static void WestoweGwimm()
+        {
+            if (owiginalgwimm == null)
+            {
+                return;
+            }
+            Instance.grimm.GetComponent<tk2dSprite>().GetCurrentSpriteDef().material.mainTexture = owiginalgwimm;
         }
 
         #endregion
@@ -493,7 +516,6 @@ namespace HowwowKnyight
             {
                 owig = owig.TrimEnd(sepawatows);
                 GlobalSettingsClass howwowKnyightSettings = new GlobalSettingsClass();
-                //Modding.Logger.Log(howwowKnyightSettings.OwO);
                 owig += howwowKnyightSettings.OwO[UnityEngine.Random.Range(0, (howwowKnyightSettings.OwO.Count - 1))];
             }
             return owig;
@@ -501,31 +523,6 @@ namespace HowwowKnyight
 
         #endregion
     }
-
-    #region unnecesary
-
-    /*#if NET35
-    public class HowwowKnyight : Mod
-        {
-            public override void Initialize()
-            {
-                Log("3.5 found");
-            }
-        }
-    #endif
-    #if NET472
-        public class HowwowKnyight : Mod
-        {
-            public override void Initialize()
-            {
-                Log("4.7.2 found");
-            }
-        }
-    #endif
-        Testing stuff*/
-
-    #endregion
-
 }
 
 #endregion
