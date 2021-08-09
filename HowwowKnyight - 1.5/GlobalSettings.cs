@@ -5,11 +5,6 @@ namespace HowwowKnyight.GlobalSettings
 {
     public class GlobalSettingsClass
     {
-        /*public string[] OwO = new[]
-        {
-                " uwu", " owo", " UwU", " OwO", " >w<", " ^w^", " QwQ", " UwU", " @w@", " >.<", " ÕwÕ", "~", "~", "~",
-                "~", "~"
-        };*/
         public List<string> OwO = new List<string>()
         {
             " uwu",
@@ -28,6 +23,6 @@ namespace HowwowKnyight.GlobalSettings
         };
     }
 }
-//This does not work fully yet, needs to be fixed.
+//This does not work fully yet, needs to be fixed. I have no idea how sadly
 
 #endregion

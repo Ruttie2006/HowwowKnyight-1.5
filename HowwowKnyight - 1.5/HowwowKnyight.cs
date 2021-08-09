@@ -355,6 +355,11 @@ namespace HowwowKnyight
                 owig = "OwO Mastew";
                 return (owig);
             }
+            if (owig == "Uumuu" && FyremothHere == false)
+            {
+                owig = "Uuwuu";
+                return owig;
+            }
             Regex r = new Regex(@"\d", RegexOptions.IgnoreCase); //I hope dis wowks SFG
             MatchCollection matches = r.Matches(owig);
             if (matches.Count > 0)
