@@ -53,7 +53,7 @@ namespace HowwowKnyight
 	   ~Ruttie
 	*/
 
-    public class HowwowKnyight : Mod, ITogglableMod, IGlobalSettings<GlobalSettingsClass>
+    public class HowwowKnyight : Mod, ITogglableMod/*, IGlobalSettings<GlobalSettingsClass>*/
     {
 
 
@@ -90,7 +90,7 @@ namespace HowwowKnyight
         public bool update;
         #endregion
 
-        public void OnLoadGlobal(GlobalSettingsClass s)
+        /*public void OnLoadGlobal(GlobalSettingsClass s)
         {
             Modding.Logger.Log("loading globalsettings");
             settings = s;
@@ -99,7 +99,7 @@ namespace HowwowKnyight
         {
             Modding.Logger.Log("saving globalsettings");
             return settings;
-        }
+        }*/
 
         #endregion
 
@@ -116,7 +116,7 @@ namespace HowwowKnyight
             //ModHooks.LanguageGetHook += WanguageGet;
         }
 
-        public override string GetVersion() => "3.7.2 - 1.5.75";
+        public override string GetVersion() => "3.7.5 - 1.5.75";
 
         #endregion
 
@@ -250,6 +250,7 @@ namespace HowwowKnyight
             TitweTexturename = "SiwkNever2.png";
             SpwitePath = ".wesuwwces.SiwkNever2.png";
             ModifyTitweTextuweRuwtine = GameManager.instance.StartCoroutine(HowwowKnyight.ModifyTitweSpwite());
+            
         }
 
         #endregion
