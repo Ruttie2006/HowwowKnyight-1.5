@@ -53,7 +53,7 @@ namespace HowwowKnyight
 	   ~Ruttie
 	*/
 
-    public class HowwowKnyight : Mod, ITogglableMod/*, IGlobalSettings<GlobalSettingsClass>*/
+    public class HowwowKnyight : Mod, ITogglableMod, IGlobalSettings<GlobalSettingsClass>
     {
 
 
@@ -90,7 +90,7 @@ namespace HowwowKnyight
         public bool update;
         #endregion
 
-        /*public void OnLoadGlobal(GlobalSettingsClass s)
+        public void OnLoadGlobal(GlobalSettingsClass s)
         {
             Modding.Logger.Log("loading globalsettings");
             settings = s;
@@ -99,7 +99,7 @@ namespace HowwowKnyight
         {
             Modding.Logger.Log("saving globalsettings");
             return settings;
-        }*/
+        }
 
         #endregion
 
@@ -527,7 +527,7 @@ namespace HowwowKnyight
             {
                 owig = owig.TrimEnd(sepawatows);
                 GlobalSettingsClass howwowKnyightSettings = new GlobalSettingsClass();
-                owig += howwowKnyightSettings.OwO[UnityEngine.Random.Range(0, (howwowKnyightSettings.OwO.Count - 1))];
+                owig += settings.OwO[UnityEngine.Random.Range(0, (settings.OwO.Count - 1))];
             }
             return owig;
         }
