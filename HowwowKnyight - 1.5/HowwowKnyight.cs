@@ -116,7 +116,7 @@ namespace HowwowKnyight
             //ModHooks.LanguageGetHook += WanguageGet;
         }
 
-        public override string GetVersion() => "3.7.5 - 1.5.75";
+        public override string GetVersion() => "3.8.2 - 1.5.75";
 
         #endregion
 
