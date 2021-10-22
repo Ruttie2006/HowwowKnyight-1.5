@@ -56,29 +56,29 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\1.5- api files\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>..\..\1.5- api files\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_PlayMaker">
-      <HintPath>..\..\1.5- api files\MMHOOK_PlayMaker.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\MMHOOK_PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.11.3.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\1.5- api files\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>..\..\1.5- api files\Mono.Security.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>..\..\1.5- api files\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>..\..\1.5- api files\MonoMod.Utils.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="PlayMaker">
-      <HintPath>..\..\1.5- api files\PlayMaker.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>\..\..\..\1.5- api files\System.dll</HintPath>
@@ -87,13 +87,13 @@
       <HintPath>\..\..\..\1.5- api files\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\1.5- api files\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\1.5- api files\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>..\..\..\1.5- api files\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
